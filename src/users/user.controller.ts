@@ -1,13 +1,18 @@
-import {BaseController} from "../common/base.controller";
 import {NextFunction, Request, Response} from "express";
-import {LoggerService} from "../logger/logger.service";
-import {HTTPError} from "../errors/http-error.class";
+import {BaseController} from "../common/base.controller.js";
+import {HTTPError} from "../errors/http-error.class.js";
+import {inject, injectable} from "inversify";
+import {TYPES} from "../types.js";
+import {ILogger} from "../logger/logger.interface.js";
+import 'reflect-metadata'
 
+
+@injectable()
 export class UserController extends BaseController {
     constructor(
-        logger: LoggerService
+        @inject(TYPES.LoggerService) private loggerService: ILogger
     ) {
-        super(logger);
+        super(loggerService);
         this.bindRoutes([
             {
                 path: '/register',
@@ -27,7 +32,8 @@ export class UserController extends BaseController {
         next(new HTTPError(401, 'Ошибка авторизации'))
     }
 
-    public register(req: Request, res: Response, next: NextFunction) {
+    public register(req: Request, res: Response) {
         this.ok(res, 'register')
     }
+
 }

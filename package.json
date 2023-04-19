@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "start": "node ./dist/main.js",
     "build": "tsc",
@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
+    "inversify": "^6.0.1",
     "reflect-metadata": "^0.1.13",
     "tslog": "^4.8.2"
   },
