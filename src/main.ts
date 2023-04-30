@@ -1,16 +1,20 @@
 import { Container, ContainerModule, interfaces } from 'inversify';
-import { App } from './app.js';
-import { ILogger } from './logger/logger.interface.js';
-import { LoggerService } from './logger/logger.service.js';
-import { TYPES } from './types.js';
-import { ExceptionFilter } from './errors/exception.filter.js';
-import { IExceptionFilter } from './errors/exception.filter.interface.js';
-import { UserController } from './users/user.controller.js';
+import { App } from './app';
+import { ILogger } from './logger/logger.interface';
+import { LoggerService } from './logger/logger.service';
+import { TYPES } from './types';
+import { ExceptionFilter } from './errors/exception.filter';
+import { IExceptionFilter } from './errors/exception.filter.interface';
+import { UserController } from './users/user.controller';
+import { IUsersService } from './users/users.service.interface';
+import { IUserController } from './users/user.controller.interface';
+import { UsersService } from './users/users.service';
 
 export const appBindings = new ContainerModule((bind: interfaces.Bind) => {
 	bind<ILogger>(TYPES.LoggerService).to(LoggerService);
 	bind<IExceptionFilter>(TYPES.ExceptionFilter).to(ExceptionFilter);
-	bind<UserController>(TYPES.UserController).to(UserController);
+	bind<IUserController>(TYPES.UserController).to(UserController);
+	bind<IUsersService>(TYPES.UserService).to(UsersService);
 	bind<App>(TYPES.Application).to(App);
 });
 
