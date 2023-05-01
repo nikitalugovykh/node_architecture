@@ -10,6 +10,8 @@
     "build": "tsc",
     "lint": "eslint ./src/**",
     "lint:fix": "eslint ./src/** --fix",
+    "generate": "prisma generate",
+    "migrate": "prisma migrate dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Nikita Lugovykh",
