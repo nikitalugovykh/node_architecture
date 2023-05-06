@@ -12,7 +12,6 @@ import { IUsersService } from './users.service.interface';
 import { ValidateMiddleware } from '../common/validate.middleware';
 import { sign } from 'jsonwebtoken';
 import { IConfigService } from '../config/config.service.interface';
-import { UserModel } from '@prisma/client';
 import { AuthGuard } from '../common/auth.guard';
 
 @injectable()
